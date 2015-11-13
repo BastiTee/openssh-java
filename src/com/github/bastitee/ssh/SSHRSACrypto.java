@@ -93,18 +93,19 @@ public final class SSHRSACrypto {
 	}
 
 	// http://msdn.microsoft.com/en-us/library/windows/desktop/bb540806%28v=vs.85%29.aspx
-	private static BigInteger readAsnInteger(DataInputStream in) throws IOException {
-		checkArgument(in.read() == 2, "no INTEGER marker");
-		int length = in.read();
-		if (length >= 0x80) {
-			byte[] extended = new byte[length & 0x7f];
-			in.readFully(extended);
-			length = new BigInteger(extended).intValue();
-		}
-		byte[] data = new byte[length];
-		in.readFully(data);
-		return new BigInteger(data);
-	}
+    private static BigInteger readAsnInteger(DataInputStream in) throws IOException {
+        checkArgument(in.read() == 2, "no INTEGER marker");
+        int length = in.read();
+        if (length >= 0x80) {
+            byte[] extended = new byte[4];
+            int bytesToRead = length & 0x7f;
+            in.readFully(extended, 4 - bytesToRead, bytesToRead);
+            length = new BigInteger(extended).intValue();
+        }
+        byte[] data = new byte[length];
+        in.readFully(data);
+        return new BigInteger(data);
+    }
 
 	/**
 	 * @param body of {@code ~/.ssh/id_rsa}

@@ -29,7 +29,7 @@ private String decrypt(byte[] text, PrivateKey key) throws GeneralSecurityExcept
 
 ...
 
-String message = "Hello World!!1!";
+String message = "Hello World.";
 byte[] cipherText = encrypt(message, publicKey);
 String decrypted = decrypt(cipherText, privateKey);
 ```

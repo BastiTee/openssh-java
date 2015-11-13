@@ -46,9 +46,10 @@ public class SSHRSACryptoTest {
 	}
 
 	public static void main(String args[]) throws Exception {
+		
 		String publicKeyBody = readFile(new File("res/test_rsa.pub"));
 		String privateKeyBody = readFile(new File("res/test_rsa"));
-
+				
 		PublicKey publicKey = SSHRSACrypto.readPublicKey(publicKeyBody);
 		PrivateKey privateKey = SSHRSACrypto.readPrivateKey(privateKeyBody);
 
