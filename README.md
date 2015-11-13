@@ -2,7 +2,7 @@ openssh-java
 ============
 
 Support for reading OpenSSH RSA keys on the JVM.
-This fork adapts Samuel Halliday original code, but has no external dependencies.
+This fork adapts Samuel Halliday original code, but has no external dependencies and no maven. 
 
 Usage
 =====
