@@ -2,42 +2,16 @@ openssh-java
 ============
 
 Support for reading OpenSSH RSA keys on the JVM.
-This fork adapts Samuel Halliday original code, but has no external dependencies and no maven. 
+This fork adapts Samuel Halliday original code, but has no external dependencies and no maven. Just plain old Java, so that you can easily copy the class into your project. 
 
-Usage
-=====
-
-```java
-PublicKey publicKey = SSHRSACrypto.readPublicKey(publicKeyBody);
-PrivateKey privateKey = SSHRSACrypto.readPrivateKey(privateKeyBody);
-```
-
-now you're in the Java Crypto API land and can do this sort of thing:
-
-```java
-private byte[] encrypt(String text, PublicKey key) throws GeneralSecurityException {
-  Cipher cipher = Cipher.getInstance(RSA);
-  cipher.init(Cipher.ENCRYPT_MODE, key);
-  return cipher.doFinal(text.getBytes());
-}
-
-private String decrypt(byte[] text, PrivateKey key) throws GeneralSecurityException {
-  Cipher cipher = Cipher.getInstance(RSA);
-  cipher.init(Cipher.DECRYPT_MODE, key);
-  return new String(cipher.doFinal(text));
-}
-
-...
-
-String message = "Hello World.";
-byte[] cipherText = encrypt(message, publicKey);
-String decrypted = decrypt(cipherText, privateKey);
-```
-
-Installation
-============
+Samle usage
+===========
 
 Just compile the code and play. No dependencies. 
+
+Compile it by running `javac SSHRSACrypto.java`
+Run the sample with `java SSHRSACrypto`
+Refer to the included main method on how to use the public methods. 
 
 Licence
 =======
