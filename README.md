@@ -18,3 +18,4 @@ Licence
 
 This code is licensed unter GNU LESSER GENERAL PUBLIC LICENSE.
 See LICENSE for details.
+
